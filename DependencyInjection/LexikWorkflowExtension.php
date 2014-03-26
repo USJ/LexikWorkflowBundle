@@ -40,6 +40,10 @@ class LexikWorkflowExtension extends Extension
         if ($container->hasDefinition('lexik_workflow.process_aggregator')) {
             $container->findDefinition('lexik_workflow.process_aggregator')->replaceArgument(0, $processReferences);
         }
+
+        // load config base on driver
+        $driver = $config['driver'];
+        $loader->load($driver.'.xml');
     }
 
     /**

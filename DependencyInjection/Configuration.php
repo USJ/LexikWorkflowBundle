@@ -3,6 +3,8 @@
 namespace Lexik\Bundle\WorkflowBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -25,11 +27,24 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->addDefaultsIfNotSet()
+            ->append($this->createDriverNodeDefinition())
             ->append($this->createClassesNodeDefinition())
             ->append($this->createProcessesNodeDefinition())
         ;
 
         return $treeBuilder;
+    }
+
+    /**
+     * @return BooleanNodeDefinition
+     */
+    private function createDriverNodeDefinition()
+    {
+        $driverNode = new ScalarNodeDefinition('driver');
+
+        $driverNode->defaultValue('orm');
+
+        return $driverNode;
     }
 
     /**

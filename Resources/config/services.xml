@@ -8,16 +8,12 @@
         <parameter key="lexik_workflow.process_aggregator.class">Lexik\Bundle\WorkflowBundle\Handler\ProcessAggregator</parameter>
         <parameter key="lexik_workflow.model_storage.class">Lexik\Bundle\WorkflowBundle\Model\ModelStorage</parameter>
         <parameter key="lexik_workflow.model_state.class">Lexik\Bundle\WorkflowBundle\Entity\ModelState</parameter>
+        <parameter key="lexik_workflow.model_state.document.class">Lexik\Bundle\WorkflowBundle\Document\ModelState</parameter>
     </parameters>
 
     <services>
         <service id="lexik_workflow.process_aggregator" class="%lexik_workflow.process_aggregator.class%">
             <argument type="collection" />
-        </service>
-
-        <service id="lexik_workflow.model_storage" class="%lexik_workflow.model_storage.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>%lexik_workflow.model_state.class%</argument>
         </service>
 
         <!-- Twig extension -->
