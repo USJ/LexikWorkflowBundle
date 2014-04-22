@@ -44,7 +44,7 @@ class ModelStateMongoDBRepository extends DocumentRepository
      */
     public function findModelStates($workflowIdentifier, $processName, $successOnly)
     {
-        $qb = $this->createQueryBuilder()
+        $qb = $this->createQueryBuilder();
         $qb
             ->field('workflowIdentifier')->equals($workflowIdentifier)
             ->field('processName')->equals($processName)

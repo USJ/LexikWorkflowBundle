@@ -2,15 +2,15 @@
 
 namespace Lexik\Bundle\WorkflowBundle\Model;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Lexik\Bundle\WorkflowBundle\Entity\ModelState;
 use Lexik\Bundle\WorkflowBundle\Validation\ViolationList;
 
-use Doctrine\ORM\EntityManager;
 
 class ModelStorage
 {
     /**
-     * @var Doctrine\ORM\EntityManager
+     * @var ObjectManager
      */
     protected $om;
 
@@ -25,7 +25,7 @@ class ModelStorage
      * @param EntityManager $om
      * @param string        $entityClass
      */
-    public function __construct(EntityManager $om, $entityClass)
+    public function __construct(ObjectManager $om, $entityClass)
     {
         $this->om = $om;
         $this->repository = $this->om->getRepository($entityClass);
