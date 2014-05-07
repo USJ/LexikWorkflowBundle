@@ -13,7 +13,7 @@ use Lexik\Bundle\WorkflowBundle\Exception\WorkflowException;
 use Lexik\Bundle\WorkflowBundle\Exception\AccessDeniedException;
 use Lexik\Bundle\WorkflowBundle\Flow\Step;
 use Lexik\Bundle\WorkflowBundle\Flow\Process;
-use Lexik\Bundle\WorkflowBundle\Entity\ModelState;
+use Lexik\Bundle\WorkflowBundle\Model\ModelState;
 use Lexik\Bundle\WorkflowBundle\Model\ModelStorage;
 use Lexik\Bundle\WorkflowBundle\Model\ModelInterface;
 
