@@ -4,7 +4,7 @@ namespace Lexik\Bundle\WorkflowBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
-use Lexik\Bundle\WorkflowBundle\Entity\ModelState;
+use Lexik\Bundle\WorkflowBundle\Model\ModelState;
 use Lexik\Bundle\WorkflowBundle\Model\ModelInterface;
 use Lexik\Bundle\WorkflowBundle\Flow\Step;
 

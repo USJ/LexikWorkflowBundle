@@ -20,15 +20,21 @@ class ModelStorage
     protected $repository;
 
     /**
+     * @var
+     */
+    protected $class;
+
+    /**
      * Construct.
      *
-     * @param EntityManager $om
-     * @param string        $entityClass
+     * @param ObjectManager $om
+     * @param string        $class
      */
-    public function __construct(ObjectManager $om, $entityClass)
+    public function __construct(ObjectManager $om, $class)
     {
         $this->om = $om;
-        $this->repository = $this->om->getRepository($entityClass);
+        $this->class = $class;
+        $this->repository = $this->om->getRepository($class);
     }
 
     /**
@@ -134,7 +140,7 @@ class ModelStorage
      */
     protected function createModelState(ModelInterface $model, $processName, $stepName, $previous = null)
     {
-        $modelState = new ModelState();
+        $modelState = $this->createModelStateObject();
         $modelState->setWorkflowIdentifier($model->getWorkflowIdentifier());
         $modelState->setProcessName($processName);
         $modelState->setStepName($stepName);
@@ -145,5 +151,14 @@ class ModelStorage
         }
 
         return $modelState;
+    }
+
+    /**
+     *
+     */
+    protected function createModelStateObject()
+    {
+        $class = $this->class;
+        return new $class;
     }
 }
